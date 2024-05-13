@@ -22,7 +22,7 @@ jobs:
         run: npm install && npm run build:prod
 
       - name: Deploy to Github pages
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           folder: angular-ci-cd/dist/browser
           branch: prod
