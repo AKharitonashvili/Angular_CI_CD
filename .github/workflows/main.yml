@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node
         with:
           node-version: 20
 
@@ -22,7 +22,7 @@ jobs:
         run: npm install && npm run build:prod
 
       - name: Deploy to Github pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        uses: JamesIves/github-pages-deploy-action
         with:
           folder: angular-ci-cd/dist/browser
           branch: prod
