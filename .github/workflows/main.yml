@@ -21,6 +21,10 @@ jobs:
         working-directory: angular-ci-cd
         run: npm install
 
+      - name: Unit Tests
+        working-directory: angular-ci-cd
+        run: npm run test
+
       - name: Build Angular App
         working-directory: angular-ci-cd
         run: npm run build:prod
