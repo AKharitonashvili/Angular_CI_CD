@@ -31,5 +31,6 @@ jobs:
           folder: angular-ci-cd/dist/browser
           branch: prod
           token: ${{ secrets.GITHUB_TOKEN }}
+
 permissions:
   contents: write
