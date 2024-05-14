@@ -30,4 +30,4 @@ jobs:
         with:
           folder: angular-ci-cd/dist/browser
           branch: prod
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
