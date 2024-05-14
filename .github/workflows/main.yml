@@ -1,12 +1,13 @@
-name: Build and Deploy
+name: Angular Build and Deploy
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,15 +25,11 @@ jobs:
         working-directory: angular-ci-cd
         run: npm run build:prod
 
-      - name: Angular Deploy gh-pages Actions
-        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
-
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
-          build_configuration: staging # The build environment for the app. please look configurations in your angular.json
-          base_href: /angular-ci-cd/ # make sure this corresponds to https://<your_username>.github.io/<base_href>/
-          deploy_branch: gh-pages # The branch the action should deploy to.
-          angular_dist_build_folder: angular-ci-cd/dist/browser # The folder where your project is supposed to be after running ng build by the action.
-
+          folder: angular-ci-cd/dist/browser
+          branch: prod
+          token: ${{ secrets.GITHUB_TOKEN }}
 permissions:
-  contents: write # Allow write permission to GITHUB_TOKEN to commit to deploy branch.
+  contents: write
